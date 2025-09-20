@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/* p{
+    background-color: blue;
+} */
+
+body {
+  background-color: #fcf9aa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

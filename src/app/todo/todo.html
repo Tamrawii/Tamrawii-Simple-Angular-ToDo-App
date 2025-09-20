@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Liste des tâches à faire</h1>
+
+  <div class="input-block">
+    <input type="text" [(ngModel)]="taskTitle" placeholder="Write your task here" />
+    <button class="input-btn" (click)="addTask()">Add</button>
+  </div>
+
+  <div class="input-block">
+    <input
+      type="text"
+      [(ngModel)]="taskTitle2"
+      placeholder="Update your task here"
+      [ngStyle]="{ cursor: taskTitle2 == '' ? 'not-allowed' : 'text' }"
+      [disabled]="taskTitle2 == '' ? true : false"
+    />
+    <button
+      class="input-btn"
+      (click)="updateTask()"
+      [ngStyle]="{ cursor: taskTitle2 == '' ? 'not-allowed' : 'pointer' }"
+      [disabled]="taskTitle2 == '' ? true : false"
+    >
+      Update
+    </button>
+  </div>
+  <ul>
+    @for (todo of todos; track todo.id) {
+
+    <div class="task-item">
+      <li
+        [id]="todo.id"
+        [ngStyle]="{ 'text-decoration': todo.isDone == 'done' ? 'line-through' : 'none' }"
+      >
+        <input
+          type="checkbox"
+          (click)="lineThrough(todo.id)"
+          [checked]="todo.isDone == 'done' ? true : false"
+        />
+        {{ todo.task }}
+      </li>
+
+      <button class="edit" (click)="editTask(todo.id)">Edit</button>
+      <button class="delete" (click)="deleteTask(todo.id)">Delete</button>
+    </div>
+    }
+  </ul>
+</div>
