@@ -1,6 +1,10 @@
-# FirstApp
+# Simple Angular ToDo App
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+
+## Preview
+![Enregistrement 2025-09-20 105441](https://github.com/user-attachments/assets/58ceae89-b9e5-4e64-99fb-c0b6196851c7)
+
 
 ## Development server
 
