@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Home } from './home/home';
 import { Todo } from "./todo/todo";
+import { TodoBootstrap } from "./todo-bootstrap/todo-bootstrap";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Home, Todo],
+  imports: [RouterOutlet, Home, Todo, TodoBootstrap],
   templateUrl: './app.html',
   // template: '<h1>App Componenet</h1>',
   //   // inline template, we use it when the componenet needs only a few html code so it doesn't need a hole page

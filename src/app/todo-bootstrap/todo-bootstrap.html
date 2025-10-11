@@ -1,0 +1,82 @@
+<div class="container">
+  <header>
+    <h1>Liste des tâches à faire</h1>
+  </header>
+
+  <section class="mb-3" id="addSection">
+    <button class="btn btn-primary" (click)="setAction('add')">Ajouter une tâche</button>
+    @if (action === "add") {
+    <form id="addForm">
+      <div class="mb-1">
+        <label for="input" class="form-label">Tâche</label>
+        <input type="text" name="input" class="form-control" #task />
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addTask(task.value)">Valider</button>
+    </form>
+    }
+  </section>
+
+  <section class="mb-3" id="editSection">
+    @if (action === "modif") {
+    <form id="addForm">
+      <div class="mb-1 row align-items-center">
+        <div class="col-8">
+          <label for="input" class="form-label">Modifier Tâche</label>
+          <input
+            type="text"
+            name="input"
+            class="form-control"
+            [(ngModel)]="selectedTask.task"
+            #newTask
+          />
+        </div>
+        <div class="col-4 align-self-end">
+          <select
+            class="form-select"
+            [selectedIndex]="selectedTask.isDone === 'undone' ? 0 : 1"
+            #selectedIndex
+          >
+            <option value="undone">Undone</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="updateTask(selectedTask.id, newTask.value, selectedIndex.selectedIndex)"
+      >
+        Valider
+      </button>
+    </form>
+    }
+  </section>
+
+  <section id="listSection">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tâche</th>
+          <th scope="col">Etat</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (todo of todos; track todo.id) {
+
+        <tr>
+          <th scope="row">{{ todo.id }}</th>
+          <td>{{ todo.task }}</td>
+          <td>{{ todo.isDone }}</td>
+          <td>
+            <button class="btn btn-success" (click)="getTask(todo.id)">Modifier</button>
+          </td>
+          <td><button class="btn btn-danger" (click)="deleteTask(todo.id)">Supprimer</button></td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</div>

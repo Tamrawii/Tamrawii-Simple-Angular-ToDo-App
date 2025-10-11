@@ -31,11 +31,7 @@
         [id]="todo.id"
         [ngStyle]="{ 'text-decoration': todo.isDone == 'done' ? 'line-through' : 'none' }"
       >
-        <input
-          type="checkbox"
-          (click)="lineThrough(todo.id)"
-          [checked]="todo.isDone == 'done' ? true : false"
-        />
+        <input type="checkbox" (click)="lineThrough(todo.id)" [checked]="todo.isDone == 'done'" />
         {{ todo.task }}
       </li>
 
