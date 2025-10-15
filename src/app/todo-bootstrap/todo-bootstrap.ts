@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AddTask } from '../add-task/add-task';
+import { EditTask } from '../edit-task/edit-task';
 
 @Component({
   selector: 'app-todo-bootstrap',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, AddTask, EditTask],
   templateUrl: './todo-bootstrap.html',
   styleUrl: './todo-bootstrap.css',
 })
@@ -45,10 +47,10 @@ export class TodoBootstrap {
     this.setAction('modif');
   }
 
-  updateTask(taskId: number, newTask: string, newState: number) {
+  updateTask(taskId: number, newTask: string, newState: string) {
     this.selectedTask.task = newTask;
 
-    this.selectedTask.isDone = newState === 0 ? 'undone' : 'done';
+    this.selectedTask.isDone = newState;
     this.todos[this.todos.findIndex((todo) => todo.id == taskId)] = this.selectedTask;
   }
 

@@ -1,0 +1,33 @@
+@if (actionParam === "modif") {
+<form id="addForm">
+  <div class="mb-1 row align-items-center">
+    <div class="col-8">
+      <label for="input" class="form-label">Modifier Tâche</label>
+      <input
+        type="text"
+        name="input"
+        class="form-control"
+        [(ngModel)]="selectedTask"
+        #newTask
+      />
+    </div>
+    <div class="col-4 align-self-end">
+      <select
+        class="form-select"
+        [selectedIndex]="isDone === 'undone' ? 0 : 1"
+        #selectedIndex
+      >
+        <option value="undone">Undone</option>
+        <option value="done">Done</option>
+      </select>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="editTaskEmitter(selectedIndex.value)"
+  >
+    Valider
+  </button>
+</form>
+}

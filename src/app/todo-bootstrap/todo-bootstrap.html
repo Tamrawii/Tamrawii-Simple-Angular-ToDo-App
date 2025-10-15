@@ -3,8 +3,9 @@
     <h1>Liste des tâches à faire</h1>
   </header>
 
-  <section class="mb-3" id="addSection">
-    <button class="btn btn-primary" (click)="setAction('add')">Ajouter une tâche</button>
+  <!-- <section class="mb-3" id="addSection">
+  <button class="btn btn-primary" (click)="setAction('add')">Ajouter une tâche</button>
+
     @if (action === "add") {
     <form id="addForm">
       <div class="mb-1">
@@ -14,9 +15,13 @@
       <button type="button" class="btn btn-primary" (click)="addTask(task.value)">Valider</button>
     </form>
     }
-  </section>
+  </section> -->
+  <section class="mb-3" id="addSection">
+    <button class="btn btn-primary" (click)="setAction('add')">Ajouter une tâche</button>
 
-  <section class="mb-3" id="editSection">
+    <app-add-task (dataAdded)="addTask($event)" [actionParam]="action"></app-add-task>
+  </section>
+  <!-- <section class="mb-3" id="editSection">
     @if (action === "modif") {
     <form id="addForm">
       <div class="mb-1 row align-items-center">
@@ -50,8 +55,16 @@
       </button>
     </form>
     }
-  </section>
+  </section> -->
 
+  <section class="mb-3" id="editSection">
+    <app-edit-task
+      [actionParam]="action"
+      [selectedTask]="selectedTask.task"
+      [isDone]="selectedTask.isDone"
+      (validerEvent)="updateTask(selectedTask.id, $event[0], $event[1])"
+    ></app-edit-task>
+  </section>
   <section id="listSection">
     <table class="table">
       <thead>

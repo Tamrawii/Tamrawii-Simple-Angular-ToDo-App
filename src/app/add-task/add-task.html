@@ -1,0 +1,9 @@
+@if (actionParam === "add") {
+<form id="addForm">
+  <div class="mb-1">
+    <label for="input" class="form-label">Tâche</label>
+    <input type="text" name="input" class="form-control" #task />
+  </div>
+  <button type="button" class="btn btn-primary" (click)="transferData(task.value)">Valider</button>
+</form>
+}

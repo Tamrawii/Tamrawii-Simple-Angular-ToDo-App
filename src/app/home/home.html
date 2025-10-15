@@ -4,3 +4,8 @@
 <img [src]="url" />
 <br />
 <button (click)="changeLogo()">Click me!</button>
+
+<div>
+  <h2>Child componenet is here :</h2>
+  <app-child (titleChanged)="setTitle($event)" [titleParam]="title"></app-child>
+</div>
